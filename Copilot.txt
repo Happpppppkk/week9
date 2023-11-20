@@ -1,0 +1,28 @@
+# Copilot conversation and programming
+
+Using GitHub Copilot:
+Original output:
+Average processing time for 500 iterations: 32.947µs
+
+Prompt1:
+can you review my code and explain the code, and then point out where can this code being better performance at?
+
+Github ai has explained the code to me and adding suggestion on few things:
+Here are some areas where the code could potentially be improved for better performance:
+	1	Parallel Processing: The OLS regression for each data set is currently being done sequentially. If the OLS function is independent for each data set and doesn't share any global state, you could use Go's goroutines to perform these calculations in parallel.
+	2	Pre-computation: If the data sets are static and not changing between iterations, you could compute the OLS regression once and reuse the results, instead of recomputing it in each iteration.
+	3	Benchmarking: Instead of manually measuring the time, you could use Go's built-in benchmarking tools. This would give you more accurate and detailed performance metrics.
+After using revised code that adding concurrency in the code, the outcome is slower than before: Average processing time for 500 iterations: 52.972µs.
+Prompt2:
+Second question, in prompt input a very vague question: do you have suggestion to revise the code which can be idiomatic
+Sure, here are a few suggestions to make your Go code more idiomatic:
+	1	Use time.Since instead of manually calculating the time difference.
+	2	Use range instead of traditional for loop if you don't need the index.
+	3	Use := for variable declaration and assignment if the variable is not declared before.
+	4	Group the data into a slice and iterate over it, instead of calling the function separately for each data set.
+What ai has done is that using range instead of for loop.
+
+I do think Copilot is helping with the assignment as in both prompt, it understands the code and able to create its suggestions based on the code but has mistakes as it did not consider the data type but generally able to help with assignment but not perform the automatic generation.
+
+Using Go generator for the unit test:
+The testing function is way more standard that allow different test case. 
